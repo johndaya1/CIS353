@@ -41,14 +41,14 @@ orderNum INTEGER,
 lineNum INTEGER,
 item CHAR (10) NOT NULL,
 quantity INTEGER,
-PRIMARY KEY (orderNum, lineNum)
+PRIMARY KEY (orderNum, lineNum),
 /*
 IC5: Every order line must belong to an order in the Order table.
 Also: if an order is deleted then all its order lines must be deleted.
 IMPORTANT: DO NOT declare this IC as DEFERRABLE.
 */
---CONSTRAINT IC5 FOREIGN KEY (orderNum) REFERENCES Orders(orderNum)
-	--ON DELETE CASCADE
+CONSTRAINT IC5 FOREIGN KEY (orderNum) REFERENCES Orders(orderNum)
+	ON DELETE CASCADE
 );
 --
 -- ----------------------------------------------------------------
