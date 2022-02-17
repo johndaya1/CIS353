@@ -15,7 +15,7 @@ CREATE TABLE Orders
 (
 orderNum INTEGER PRIMARY KEY,
 priority CHAR(10) NOT NULL,
-cost INTEGER NOT NULL,
+cost INTEGER NOT NULL
 /*
 IC1: The priority is one of: high, medium, or low
 */
@@ -41,7 +41,7 @@ orderNum INTEGER,
 lineNum INTEGER,
 item CHAR (10) NOT NULL,
 quantity INTEGER,
-PRIMARY KEY (orderNum, lineNum),
+PRIMARY KEY (orderNum, lineNum)
 /*
 IC5: Every order line must belong to an order in the Order table.
 Also: if an order is deleted then all its order lines must be deleted.
