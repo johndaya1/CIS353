@@ -19,19 +19,19 @@ cost INTEGER NOT NULL,
 /*
 IC1: The priority is one of: high, medium, or low
 */
-CONSTRAINT IC1 CHECK (priority IN ('high','medium','low')),
+--CONSTRAINT IC1 CHECK (priority IN ('high','medium','low')),
 /*
 IC2: The cost of a high priority order is above 2000.
 */
-CONSTRAINT IC2 CHECK ( cost > 2000 AND priority == 'high'),
+--CONSTRAINT IC2 CHECK ( cost > 2000 AND priority == 'high'),
 /*
 IC3: The cost of a medium priority order is between 800 and 2200 (inclusive).
 */
-CONSTRAINT IC3 CHECK ( (cost >= 800 OR cost <= 2200) AND priority == 'medium'),
+--CONSTRAINT IC3 CHECK ( (cost >= 800 OR cost <= 2200) AND priority == 'medium'),
 /*
 IC4: The cost of a low priority order is less than 1000.
 */
-CONSTRAINT IC4 CHECK ( cost < 1000 AND priority == 'low')
+--CONSTRAINT IC4 CHECK ( cost < 1000 AND priority == 'low')
 );
 --
 --
@@ -47,8 +47,8 @@ IC5: Every order line must belong to an order in the Order table.
 Also: if an order is deleted then all its order lines must be deleted.
 IMPORTANT: DO NOT declare this IC as DEFERRABLE.
 */
-CONSTRAINT IC5 FOREIGN KEY (orderNum) REFERENCES Orders(orderNum)
-	ON DELETE CASCADE
+--CONSTRAINT IC5 FOREIGN KEY (orderNum) REFERENCES Orders(orderNum)
+	--ON DELETE CASCADE
 );
 --
 -- ----------------------------------------------------------------
