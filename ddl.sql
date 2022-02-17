@@ -19,11 +19,11 @@ cost INTEGER NOT NULL,
 /*
 IC1: The priority is one of: high, medium, or low
 */
-CONSTRAINT IC1 CHECK (priority IN ('high','medium','low'))
+CONSTRAINT IC1 CHECK (priority IN ('high','medium','low')),
 /*
 IC2: The cost of a high priority order is above 2000.
 */
---CONSTRAINT IC2 CHECK ( cost > 2000 AND priority == 'high')
+CONSTRAINT IC2 CHECK ( NOT (cost > 2000 AND priority == 'high'))
 /*
 IC3: The cost of a medium priority order is between 800 and 2200 (inclusive).
 */
