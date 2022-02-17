@@ -7,18 +7,12 @@ SQL> /*The following DROP command is inserted for convenience so that if you nee
 SQL> to recompile your code, it will drop the table (if it already exists).
 SQL> */
 SQL> DROP TABLE Orders CASCADE CONSTRAINTS;
-DROP TABLE Orders CASCADE CONSTRAINTS
-           *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+Table dropped.
 
 SQL> DROP TABLE OrderLine CASCADE CONSTRAINTS;
-DROP TABLE OrderLine CASCADE CONSTRAINTS
-           *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+Table dropped.
 
 SQL> --
 SQL> CREATE TABLE Orders
@@ -33,21 +27,18 @@ SQL> CREATE TABLE Orders
  10  /*
  11  IC2: The cost of a high priority order is above 2000.
  12  */
- 13  CONSTRAINT IC2 CHECK ( cost > 2000 AND priority == 'high'),
+ 13  CONSTRAINT IC2 CHECK (NOT ((cost < 2000) AND (priority = 'high'))),
  14  /*
  15  IC3: The cost of a medium priority order is between 800 and 2200 (inclusive).
  16  */
- 17  CONSTRAINT IC3 CHECK ( (cost >= 800 OR cost <= 2200) AND priority == 'medium'),
+ 17  CONSTRAINT IC3 CHECK ( NOT ((cost < 800 OR cost > 2200) AND (priority = 'medium'))),
  18  /*
  19  IC4: The cost of a low priority order is less than 1000.
  20  */
- 21  CONSTRAINT IC4 CHECK ( cost < 1000 AND priority == 'low')
+ 21  CONSTRAINT IC4 CHECK ( NOT ((cost > 1000) AND (priority = 'low')))
  22  );
-CONSTRAINT IC2 CHECK ( cost > 2000 AND priority == 'high'),
-                                                 *
-ERROR at line 13:
-ORA-00936: missing expression 
 
+Table created.
 
 SQL> --
 SQL> --
@@ -66,124 +57,100 @@ SQL> CREATE TABLE OrderLine
  13  CONSTRAINT IC5 FOREIGN KEY (orderNum) REFERENCES Orders(orderNum)
  14  	     ON DELETE CASCADE
  15  );
-CONSTRAINT IC5 FOREIGN KEY (orderNum) REFERENCES Orders(orderNum)
-                                                 *
-ERROR at line 13:
-ORA-00942: table or view does not exist 
 
+Table created.
 
 SQL> --
 SQL> -- ----------------------------------------------------------------
 SQL> -- TESTING THE SCHEMA
 SQL> -- ----------------------------------------------------------------
 SQL> INSERT INTO Orders VALUES (10, 'high', 2400);
-INSERT INTO Orders VALUES (10, 'high', 2400)
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+1 row created.
 
 SQL> INSERT INTO Orders VALUES (20, 'high', 1900);
 INSERT INTO Orders VALUES (20, 'high', 1900)
-            *
+*
 ERROR at line 1:
-ORA-00942: table or view does not exist 
+ORA-02290: check constraint (JOHNDAYA.IC2) violated 
 
 
 SQL> INSERT INTO Orders VALUES (30, 'high', 2100);
-INSERT INTO Orders VALUES (30, 'high', 2100)
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+1 row created.
 
 SQL> INSERT INTO Orders VALUES (40, 'medium', 700);
 INSERT INTO Orders VALUES (40, 'medium', 700)
-            *
+*
 ERROR at line 1:
-ORA-00942: table or view does not exist 
+ORA-02290: check constraint (JOHNDAYA.IC3) violated 
 
 
-SQL> PA-05-DDLc-OL.doc Page 3 of 3
-SP2-0734: unknown command beginning "PA-05-DDLc..." - rest of line ignored.
+SQL> --PA-05-DDLc-OL.doc Page 3 of 3
 SQL> INSERT INTO Orders VALUES (50, 'low', 1100);
 INSERT INTO Orders VALUES (50, 'low', 1100)
-            *
+*
 ERROR at line 1:
-ORA-00942: table or view does not exist 
+ORA-02290: check constraint (JOHNDAYA.IC4) violated 
 
 
 SQL> INSERT INTO Orders VALUES (60, 'low', 900);
-INSERT INTO Orders VALUES (60, 'low', 900)
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+1 row created.
 
 SQL> SELECT * from Orders;
-SELECT * from Orders
-              *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+  ORDERNUM PRIORITY         COST                                                
+---------- ---------- ----------                                                
+        10 high             2400                                                
+        30 high             2100                                                
+        60 low               900                                                
 
 SQL> -- ----------------------------------------------------------------
 SQL> INSERT INTO OrderLine VALUES (10, 1, 'AAA', 200);
-INSERT INTO OrderLine VALUES (10, 1, 'AAA', 200)
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+1 row created.
 
 SQL> INSERT INTO OrderLine VALUES (10, 2, 'BBB', 300);
-INSERT INTO OrderLine VALUES (10, 2, 'BBB', 300)
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+1 row created.
 
 SQL> INSERT INTO OrderLine VALUES (60, 1, 'CCC', 5);
-INSERT INTO OrderLine VALUES (60, 1, 'CCC', 5)
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+1 row created.
 
 SQL> INSERT INTO OrderLine VALUES (15, 1, 'AAA', 7);
 INSERT INTO OrderLine VALUES (15, 1, 'AAA', 7)
-            *
+*
 ERROR at line 1:
-ORA-00942: table or view does not exist 
+ORA-02291: integrity constraint (JOHNDAYA.IC5) violated - parent key not found 
 
 
 SQL> SELECT * FROM OrderLine;
-SELECT * FROM OrderLine
-              *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+  ORDERNUM    LINENUM ITEM         QUANTITY                                     
+---------- ---------- ---------- ----------                                     
+        10          1 AAA               200                                     
+        10          2 BBB               300                                     
+        60          1 CCC                 5                                     
 
 SQL> --
 SQL> DELETE FROM Orders WHERE orderNum = 10;
-DELETE FROM Orders WHERE orderNum = 10
-            *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+1 row deleted.
 
 SQL> SELECT * From Orders;
-SELECT * From Orders
-              *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+  ORDERNUM PRIORITY         COST                                                
+---------- ---------- ----------                                                
+        30 high             2100                                                
+        60 low               900                                                
 
 SQL> SELECT * FROM OrderLine;
-SELECT * FROM OrderLine
-              *
-ERROR at line 1:
-ORA-00942: table or view does not exist 
 
+  ORDERNUM    LINENUM ITEM         QUANTITY                                     
+---------- ---------- ---------- ----------                                     
+        60          1 CCC                 5                                     
 
 SQL> --
 SQL> SET ECHO OFF
