@@ -15,7 +15,7 @@ CREATE TABLE Orders
 (
 orderNum INTEGER PRIMARY KEY,
 priority CHAR(10) NOT NULL,
-cost INTEGER NOT NULL
+cost INTEGER NOT NULL,
 /*
 IC1: The priority is one of: high, medium, or low
 */
@@ -23,7 +23,7 @@ IC1: The priority is one of: high, medium, or low
 /*
 IC2: The cost of a high priority order is above 2000.
 */
---CONSTRAINT IC2 CHECK ( cost > 2000 AND priority == 'high'),
+CONSTRAINT IC2 CHECK ( cost > 2000 AND priority == 'high')
 /*
 IC3: The cost of a medium priority order is between 800 and 2200 (inclusive).
 */
@@ -58,7 +58,7 @@ INSERT INTO Orders VALUES (10, 'high', 2400);
 INSERT INTO Orders VALUES (20, 'high', 1900);
 INSERT INTO Orders VALUES (30, 'high', 2100);
 INSERT INTO Orders VALUES (40, 'medium', 700);
-PA-05-DDLc-OL.doc Page 3 of 3
+--PA-05-DDLc-OL.doc Page 3 of 3
 INSERT INTO Orders VALUES (50, 'low', 1100);
 INSERT INTO Orders VALUES (60, 'low', 900);
 SELECT * from Orders;
