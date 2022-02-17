@@ -27,11 +27,11 @@ CONSTRAINT IC2 CHECK (NOT ((cost < 2000) AND (priority = 'high'))),
 /*
 IC3: The cost of a medium priority order is between 800 and 2200 (inclusive).
 */
-CONSTRAINT IC3 CHECK ( NOT ((cost < 800 OR cost > 2200) AND (priority = 'medium')))
+CONSTRAINT IC3 CHECK ( NOT ((cost < 800 OR cost > 2200) AND (priority = 'medium'))),
 /*
 IC4: The cost of a low priority order is less than 1000.
 */
---CONSTRAINT IC4 CHECK ( cost < 1000 AND priority == 'low')
+CONSTRAINT IC4 CHECK ( NOT ((cost > 1000) AND (priority = 'low')))
 );
 --
 --
