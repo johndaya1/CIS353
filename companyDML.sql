@@ -41,7 +41,10 @@ ORDER BY Ssn;
 /*(11A)
 For every employee who works more than 30 hours on any project: Find the ssn, lname, project number, project name, and numer of hours. Sort the results by ssn.
 */
--- <<< Your SQL code replaces this whole line>>>
+SELECT Ssn, Lname,Pnumber, Pname, Hours
+FROM EMPLOYEE, PROJECT, WORKS_ON
+WHERE Hours > 30.0
+ORDER BY Ssn;
 --
 -- JOINING 3 TABLES ---------------------------
 --
