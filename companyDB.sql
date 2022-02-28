@@ -153,5 +153,5 @@ insert into dependent values ( 123456789, 'Alice', 'F', '1988-12-30', 'Daughter'
 insert into dependent values ( 123456789, 'Elizabeth', 'F', '1967-05-05', 'Spouse' );
 
 SELECT*
-FROM *;
+FROM dependent, works_on,project,dept_locations,department,employee;
 COMMIT;
