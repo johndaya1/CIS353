@@ -22,7 +22,7 @@ SPOOL companyDML-a1.txt
 SET ECHO ON
 -- ---------------------------------------------------------------
 -- 
--- Name: < ***** ENTER YOUR NAME HERE ***** >
+-- Name: Dayaseh Johnson
 --
 -- ------------------------------------------------------------
 -- NULL AND SUBSTRINGS -------------------------------
@@ -30,7 +30,10 @@ SET ECHO ON
 /*(10A)
 Find the ssn and last name of every employee who doesn't have a  supervisor, or their last name contains at least two occurences of the letter 'a'. Sort the results by ssn.
 */
--- <<< Your SQL code replaces this whole line>>>
+SELECT Ssn, Lname
+FROM EMPLOYEE
+WHERE Super_ssn IS NULL
+GROUP BY Ssn;
 --
 -- JOINING 3 TABLES ------------------------------
 -- 
