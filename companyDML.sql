@@ -34,7 +34,7 @@ SELECT Ssn, Lname
 FROM EMPLOYEE
 WHERE Super_ssn IS NULL OR 
       Lname LIKE '%a%'
-GROUP BY Ssn, Lname;
+ORDER BY Ssn;
 --
 -- JOINING 3 TABLES ------------------------------
 -- 
