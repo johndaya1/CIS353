@@ -44,7 +44,6 @@ For every employee who works more than 30 hours on any project: Find the ssn, ln
 SELECT Ssn, Lname,Pnumber, Pname, Hours
 FROM EMPLOYEE, PROJECT, WORKS_ON
 WHERE Hours > 30.0
-GROUP BY Ssn, Lname,Pnumber, Pname, Hours
 ORDER BY Ssn;
 --
 -- JOINING 3 TABLES ---------------------------
@@ -53,7 +52,12 @@ ORDER BY Ssn;
 Write a query that consists of one block only.
 For every employee who works on a project that is not controlled by the department they work for: Find the employee's lname, the department they works for, the project number that they work on, and the number of the department that controls that project. Sort the results by lname.
 */
--- <<< Your SQL code replaces this whole line>>>
+SELECT Lname, Dname, Pnumber, Dnum
+FROM EMPLOYEE, PROJECT, DEPARTMENT
+WHERE (SELECT Essn, Dnum, Dno, Ssn
+       FROM EMPLOYEE, PROJECT, WORKS_ON
+       WHERE (NOT ((Essn = Ssn) AND (Dnum != Dno))))
+ORDER BY Lname;
 --
 -- JOINING 4 TABLES -------------------------
 --
