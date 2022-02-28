@@ -32,7 +32,8 @@ Find the ssn and last name of every employee who doesn't have a  supervisor, or 
 */
 SELECT Ssn, Lname
 FROM EMPLOYEE
-WHERE Super_ssn IS NULL;
+WHERE Super_ssn IS NULL
+GROUP BY Ssn, Lname;
 --
 -- JOINING 3 TABLES ------------------------------
 -- 
