@@ -52,9 +52,9 @@ ORDER BY Ssn;
 Write a query that consists of one block only.
 For every employee who works on a project that is not controlled by the department they work for: Find the employee's lname, the department they works for, the project number that they work on, and the number of the department that controls that project. Sort the results by lname.
 */
-SELECT Lname, Dno, Dnum, Pno, Essn, Ssn
+SELECT Lname, Dno, Dnum, Pno, Essn, Ssn, Pnumber
 FROM EMPLOYEE, PROJECT, WORKS_ON
-WHERE NOT Essn = Ssn
+WHERE Essn = Ssn AND Pno = Pnumber AND Dno != Dnum
 ORDER BY Lname;
 --
 -- JOINING 4 TABLES -------------------------
