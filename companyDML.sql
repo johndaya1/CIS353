@@ -56,7 +56,7 @@ SELECT Lname, Dname, Pnumber, Dnum
 FROM EMPLOYEE, PROJECT, DEPARTMENT
 WHERE (SELECT Essn, Dnum, Dno, Ssn
        FROM EMPLOYEE, PROJECT, WORKS_ON
-       WHERE Essn = Ssn);
+       WHERE Essn == Ssn);
 ORDER BY Lname;
 --
 -- JOINING 4 TABLES -------------------------
