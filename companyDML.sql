@@ -70,14 +70,17 @@ For every employee who works for more than 20 hours on any project that is locat
 Write a query that consists of one block only.
 For every employee whose salary is less than 70% of his/her immediate supervisor's salary: Find that employee's ssn, lname, salary; and their supervisor's ssn, lname, and salary. Sort the results by ssn.  
 */
--- <<< Your SQL code replaces this whole line>>>
+SELECT s1.Ssn, s1.Lname, s1.salary, s1.super_ssn, s2.ssn, s2.lname, s2.salary
+FROM employee
+WHERE s1.super_ssn = s2.ssn AND s1.salary < (0.70 * s2.salary)
+ORDER BY ssn;
 --
 -- USING MORE THAN ONE RANGE VARIABLE ON ONE TABLE -------------------
 --
 /*(15A)
 For projects located in Houston: Find pairs of last names such that the two employees in the pair work on the same project. Remove duplicates. Sort the result by the lname in the left column in the result. 
 */
--- <<< Your SQL code replaces this whole line>>>
+
 --
 ------------------------------------
 --
