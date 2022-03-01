@@ -62,7 +62,9 @@ ORDER BY Lname;
 /*(13A)
 For every employee who works for more than 20 hours on any project that is located in the same location as their department: Find the ssn, lname, project number, project location, department number, and department location. Sort the results by lname
 */
--- <<< Your SQL code replaces this whole line>>>
+SELECT ssn, lname, pno, plocation, dno, dlocation
+FROM employee, dept_locations, works_on, project
+WHERE hours > 20;
 --
 -- SELF JOIN -------------------------------------------
 -- 
