@@ -54,9 +54,7 @@ For every employee who works on a project that is not controlled by the departme
 */
 SELECT Lname, Dname, Pnumber, Dnum
 FROM EMPLOYEE, PROJECT, DEPARTMENT
-WHERE (SELECT Essn, Dnum, Dno, Ssn
-       FROM EMPLOYEE, PROJECT, WORKS_ON
-       WHERE Essn == Ssn);
+WHERE Dno <> Dnum
 ORDER BY Lname;
 --
 -- JOINING 4 TABLES -------------------------
