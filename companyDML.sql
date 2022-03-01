@@ -54,7 +54,7 @@ For every employee who works on a project that is not controlled by the departme
 */
 SELECT Lname, Dname, Pnumber, Dnum
 FROM EMPLOYEE, PROJECT, DEPARTMENT
-WHERE (SELECT Essn, Dnum, Dno, Ssn
+WHERE NOT (SELECT Essn, Dnum, Dno, Ssn
        FROM EMPLOYEE, PROJECT, WORKS_ON
        WHERE (NOT ((Essn == Ssn) AND (Dnum != Dno))))
 ORDER BY Lname;
