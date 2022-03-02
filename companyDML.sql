@@ -64,7 +64,7 @@ For every employee who works for more than 20 hours on any project that is locat
 */
 SELECT ssn, lname, pno, plocation, dno, dlocation
 FROM employee, dept_locations, works_on, project
-WHERE hours > 20 AND essn = ssn AND plocation = dlocation
+WHERE hours > 20 AND essn = ssn AND plocation = dlocation AND pno = pnumber
 ORDER BY lname;
 --
 -- SELF JOIN -------------------------------------------
