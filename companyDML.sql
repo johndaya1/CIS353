@@ -83,7 +83,11 @@ ORDER BY s1.Ssn;
 /*(15A)
 For projects located in Houston: Find pairs of last names such that the two employees in the pair work on the same project. Remove duplicates. Sort the result by the lname in the left column in the result. 
 */
-
+/*
+SELECT s1.Lname, s2.lname
+FROM employee s1, employee s2, dept_location, project
+WHERE 
+*/
 --
 ------------------------------------
 --
