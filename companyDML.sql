@@ -43,7 +43,7 @@ For every employee who works more than 30 hours on any project: Find the ssn, ln
 */
 SELECT Ssn, Lname,Pnumber, Pname, Hours
 FROM EMPLOYEE, PROJECT, WORKS_ON
-WHERE Hours > 30.0 AND pno = pnumber
+WHERE Hours > 30.0 AND pno = pnumber AND essn = ssn
 ORDER BY Ssn;
 --
 -- JOINING 3 TABLES ---------------------------
