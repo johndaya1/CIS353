@@ -94,7 +94,7 @@ FROM employee;
 /*(140) RANK query ... compare with the previous query.
 Find the rank of the salary 31000 among all salaries.
 */
-SELECT salary, RANK(31000) OVER(ORDER BY salary ASC) AS rank
+SELECT salary, RANK(31000) WITHIN(ORDER BY salary ASC) AS rank
 FROM employee; 
 --
 /*(145) DENSE RANK query
