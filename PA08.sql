@@ -42,12 +42,16 @@ Find the ssn, lname, and salary of only four employees.
 */
 SELECT ssn, lname, salary
 FROM EMPLOYEE
-WHERE ROWNUM < 4;
+WHERE ROWNUM < 5;
 --
 /*(115) TOP-N query.
 Find the ssn, lname, and salary of the four highest paid employees.
 */
--- << write your sql code here >>> 
+SELECT ROWNUM as rank, ssn, lname, salary
+FROM (SELECT ssn, lname, salary
+      FROM EMPLOYEE
+      ORDER BY salary)
+WHERE ROWNUM <= 4;
 --
 /*(120) TOP-N query.
 Find the ssn, lname, and salary of the four lowest paid employees
