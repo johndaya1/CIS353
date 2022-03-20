@@ -121,7 +121,7 @@ Hint: The output of your query should be:
 SELECT ssn
 FROM employee
 START WITH ssn = 453453453
-connect by prior ssn = super_ssn;
+connect by prior super_ssn = ssn;
 ---------------------------------------------------------------
 SET ECHO OFF
 SPOOL OFF
