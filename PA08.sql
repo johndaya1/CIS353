@@ -75,14 +75,13 @@ WHERE ROWNUM <= 2;
 For every employee whose salary is equal to one of the two lowest salaries, Find the ssn, lname, and salary.
 */
 
-SELECT DISTINCT s1.ssn, s1.lname, s1.salary
-FROM (SELECT DISTINCT s1.ssn, s1.lname, s1.salary
+SELECT DISTINCT sssn, lname, salary
+FROM (SELECT DISTINCT ssn, lname, salary
       FROM EMPLOYEE s1
       ORDER BY salary ASC
       FETCH NEXT 4 ROWS ONLY)
 ORDER BY salary;
       
-
 
 /*(135) RANK query
 Find the rank of the salary 30000 among all salaries. (HINT: The ranks in our database are 1 for 25000, 4 for 30000, 5 for 38000, and so on.)
