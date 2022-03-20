@@ -79,7 +79,7 @@ SELECT DISTINCT ssn, lname, salary
 FROM (SELECT DISTINCT ssn, lname,salary
       FROM EMPLOYEE
       ORDER BY salary ASC
-      FETCH NEXT 5 ROWS);
+      FETCH NEXT 5 ROWS ONLY);
 
       
 
