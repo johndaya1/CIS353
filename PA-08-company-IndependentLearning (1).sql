@@ -35,12 +35,14 @@ SPOOL company-IndependentLearning.txt
 SET ECHO ON
 -- ---------------------------------------------------------------
 -- 
--- Name: < ***** PLEASE ENTER YOUR NAME HERE ***** >
+-- Name: Dayaseh Johnson
 --
 /*(110) Using ROWNUM to limit the size of the result. (Notice that SQL and some systems use the LIMIT or TOP clauses. Oracle uses ROENUM to accomplish similar tasks.)
 Find the ssn, lname, and salary of only four employees.
 */
--- <<Insert your SQL code after this line>>> 
+SELECT ssn, lname, salary
+FROM EMPLOYEE
+WHERE ROWNUM = 4;
 --
 /*(115) TOP-N query.
 Find the ssn, lname, and salary of the four highest paid employees.
