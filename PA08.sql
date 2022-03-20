@@ -76,7 +76,7 @@ For every employee whose salary is equal to one of the two lowest salaries, Find
 */
 
 SELECT ssn, lname salary
-FROM (SELECT DISTINCT ssn, lname, salary
+FROM (SELECT ssn, lname, salary
       FROM EMPLOYEE
       ORDER BY salary ASC)
 ORDER BY salary;
