@@ -120,7 +120,7 @@ Hint: The output of your query should be:
 */
 SELECT ssn
 FROM employee
-START WITH super_ssn is null
+START WITH ssn = 453453453
 connect by prior ssn = super_ssn;
 ---------------------------------------------------------------
 SET ECHO OFF
