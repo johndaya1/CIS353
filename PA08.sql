@@ -56,12 +56,20 @@ WHERE ROWNUM <= 4;
 /*(120) TOP-N query.
 Find the ssn, lname, and salary of the four lowest paid employees
 */
--- <<Insert your SQL code after this line>>> 
+SELECT ssn, lname, salary
+FROM (SELECT ssn, lname, salary
+      FROM EMPLOYEE
+      ORDER BY salary ASC)
+WHERE ROWNUM <= 4; 
 --
 /*(125) TOP-N query.
 Find the lowest two salaries in the company.(Notice that in our database, the two lowest salaries are 25K and 30K.)
 */
--- <<Insert your SQL code after this line>>> 
+SELECT salary
+FROM (SELECT salary
+      FROM EMPLOYEE
+      ORDER BY salary ASC)
+WHERE ROWNUM <= 2;
 --
 /*(130) TOP-N query.
 For every employee whose salary is equal to one of the two lowest salaries, Find the ssn, lname, and salary.
