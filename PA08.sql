@@ -68,20 +68,19 @@ Find the lowest two salaries in the company.(Notice that in our database, the tw
 SELECT DISTINCT salary
 FROM (SELECT DISTINCT salary
       FROM EMPLOYEE
-      ORDER BY salary ASC
-      WHERE ROWNUM <= 2);
+      ORDER BY salary ASC)
+WHERE ROWNUM <= 2;
 --
 /*(130) TOP-N query.
 For every employee whose salary is equal to one of the two lowest salaries, Find the ssn, lname, and salary.
 */
-/*
+
 SELECT DISTINCT ssn, lname salary
 FROM (SELECT DISTINCT s1.ssn, s1.lname, s1.salary
       FROM EMPLOYEE s1
       ORDER BY s1.salary ASC)
-WHERE ROWNUM <= 2;
-*/
---
+WHERE ROWNUM <= 2 AND salary = s1.salary;
+
 /*(135) RANK query
 Find the rank of the salary 30000 among all salaries. (HINT: The ranks in our database are 1 for 25000, 4 for 30000, 5 for 38000, and so on.)
 */
