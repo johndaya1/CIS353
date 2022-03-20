@@ -65,8 +65,8 @@ WHERE ROWNUM <= 4;
 /*(125) TOP-N query.
 Find the lowest two salaries in the company.(Notice that in our database, the two lowest salaries are 25K and 30K.)
 */
-SELECT salary
-FROM (SELECT salary
+SELECT salary DISTINCT
+FROM (SELECT salary DISTINCT
       FROM EMPLOYEE
       ORDER BY salary ASC)
 WHERE ROWNUM <= 2;
