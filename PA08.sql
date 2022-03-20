@@ -89,7 +89,7 @@ ORDER BY salary;
 Find the rank of the salary 30000 among all salaries. (HINT: The ranks in our database are 1 for 25000, 4 for 30000, 5 for 38000, and so on.)
 */
 SELECT salary, RANK() OVER(ORDER BY salary ASC) AS rank
-FROM employee
+FROM employee;
 
 --
 /*(140) RANK query ... compare with the previous query.
@@ -103,7 +103,7 @@ WHERE salary = 31000;
 Find the dense rank of the salary 30000 among all salaries. Hint: The dense ranks in our database are 1 for 25000, 2 for 30000, 3 for 38000, and so on.
 */
 SELECT salary, DENSE_RANK() OVER(ORDER BY salary ASC) AS rank
-FROM employee
+FROM employee;
 
 -- 
 /*(150) DENSE RANK query ... compare with the previous query.
