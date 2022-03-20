@@ -75,12 +75,12 @@ WHERE ROWNUM <= 2;
 For every employee whose salary is equal to one of the two lowest salaries, Find the ssn, lname, and salary.
 */
 
-SELECT DISTINCT ssn, lname, salary
+SELECT DISTINCT s1.ssn, s1.lname, salary
 FROM (SELECT DISTINCT salary
       FROM EMPLOYEE
       ORDER BY salary ASC
       FETCH NEXT 2 ROWS ONLY),
-      EMPLOYEE
+      EMPLOYEE s1
 ORDER BY salary;
       
 
