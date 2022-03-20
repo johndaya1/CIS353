@@ -68,8 +68,8 @@ Find the lowest two salaries in the company.(Notice that in our database, the tw
 SELECT DISTINCT salary
 FROM (SELECT DISTINCT salary
       FROM EMPLOYEE
-      WHERE ROWNUM <= 2
-      ORDER BY salary ASC);
+      ORDER BY salary ASC
+      WHERE ROWNUM <= 2);
 --
 /*(130) TOP-N query.
 For every employee whose salary is equal to one of the two lowest salaries, Find the ssn, lname, and salary.
