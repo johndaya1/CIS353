@@ -102,7 +102,9 @@ WHERE salary = 31000;
 /*(145) DENSE RANK query
 Find the dense rank of the salary 30000 among all salaries. Hint: The dense ranks in our database are 1 for 25000, 2 for 30000, 3 for 38000, and so on.
 */
--- <<Insert your SQL code after this line>>> 
+SELECT salary, DENSE_RANK() OVER(ORDER BY salary ASC) AS rank
+FROM employee
+WHERE salary = 30000;
 -- 
 /*(150) DENSE RANK query ... compare with the previous query.
 Find the dense rank of the salary 31000 among all salaries. Hint: The dense ranks in our database are 1 for 25000, 2 for 30000, 3 for 38000, and so on.
