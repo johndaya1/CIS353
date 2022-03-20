@@ -79,7 +79,7 @@ SELECT DISTINCT ssn, lname salary
 FROM (SELECT DISTINCT ssn, lname, salary
       FROM EMPLOYEE
       ORDER BY salary ASC)
-WHERE ROWNUM <= 2
+WHERE ROWNUM <= 2;
 
 /*(135) RANK query
 Find the rank of the salary 30000 among all salaries. (HINT: The ranks in our database are 1 for 25000, 4 for 30000, 5 for 38000, and so on.)
