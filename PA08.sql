@@ -118,7 +118,7 @@ Hint: The output of your query should be:
 333445555	888665555
 888665555	- 
 */
-SELECT ssn
+SELECT ssn, super_ssn
 FROM employee
 START WITH ssn = 453453453
 connect by prior super_ssn = ssn;
