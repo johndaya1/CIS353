@@ -94,7 +94,7 @@ FROM employee;
 /*(140) RANK query ... compare with the previous query.
 Find the rank of the salary 31000 among all salaries.
 */
-SELECT salary, RANK(31000) with GROUP(ORDER BY salary ASC) AS rank
+SELECT salary, RANK(31000) WITH GROUP(ORDER BY salary ASC) AS rank
 FROM employee; 
 --
 /*(145) DENSE RANK query
@@ -118,7 +118,10 @@ Hint: The output of your query should be:
 333445555	888665555
 888665555	- 
 */
--- <<Insert your SQL code after this line>>> 
+SELECT ssn
+FROM employee
+START WITH super_ssn is null
+connect by prior ssn = super_ssn;
 ---------------------------------------------------------------
 SET ECHO OFF
 SPOOL OFF
