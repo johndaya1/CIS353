@@ -42,7 +42,7 @@ Find the ssn, lname, and salary of only four employees.
 */
 SELECT ssn, lname, salary
 FROM EMPLOYEE
-WHERE salary > 5;
+WHERE ROWNUM < 4;
 --
 /*(115) TOP-N query.
 Find the ssn, lname, and salary of the four highest paid employees.
