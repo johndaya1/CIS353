@@ -94,7 +94,7 @@ FROM employee;
 /*(140) RANK query ... compare with the previous query.
 Find the rank of the salary 31000 among all salaries.
 */
-SELECT salary, RANK(31000) WITHIN GROUP(ORDER BY salary ASC) AS rank
+SELECT salary, RANK(30000) WITHIN GROUP(ORDER BY salary ASC) AS rank
 FROM employee; 
 --
 /*(145) DENSE RANK query
@@ -107,7 +107,7 @@ FROM employee;
 /*(150) DENSE RANK query ... compare with the previous query.
 Find the dense rank of the salary 31000 among all salaries. Hint: The dense ranks in our database are 1 for 25000, 2 for 30000, 3 for 38000, and so on.
 */
-SELECT salary, DENSE_RANK(31000) WITHIN(ORDER BY salary ASC) AS rank
+SELECT salary, DENSE_RANK(31000) WITHIN GROUP(ORDER BY salary ASC) AS rank
 FROM employee;
 --
 /*(155)HIERARCHICAL query (uses START WITH and CONNECT BY PRIOR)
