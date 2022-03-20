@@ -79,8 +79,7 @@ SELECT DISTINCT s1.ssn, s1.lname, s1.salary
 FROM (SELECT DISTINCT s1.ssn, s1.lname, s1.salary
       FROM EMPLOYEE s1
       ORDER BY salary ASC
-      FETCH NEXT 2 ROWS ONLY),
-      EMPLOYEE s1
+      FETCH NEXT 4 ROWS ONLY)
 ORDER BY salary;
       
 
@@ -95,9 +94,8 @@ FROM employee;
 /*(140) RANK query ... compare with the previous query.
 Find the rank of the salary 31000 among all salaries.
 */
-SELECT salary, RANK() OVER(ORDER BY salary ASC) AS rank
-FROM employee
-WHERE salary = 31000; 
+SELECT salary, RANK(31000) WITHIN GROUP(ORDER BY salary ASC) AS rank
+FROM employee; 
 --
 /*(145) DENSE RANK query
 Find the dense rank of the salary 30000 among all salaries. Hint: The dense ranks in our database are 1 for 25000, 2 for 30000, 3 for 38000, and so on.
@@ -109,7 +107,8 @@ FROM employee;
 /*(150) DENSE RANK query ... compare with the previous query.
 Find the dense rank of the salary 31000 among all salaries. Hint: The dense ranks in our database are 1 for 25000, 2 for 30000, 3 for 38000, and so on.
 */
--- <<Insert your SQL code after this line>>> 
+SELECT salary, DENSE_RANK() OVER(ORDER BY salary ASC) AS rank
+FROM employee;
 --
 /*(155)HIERARCHICAL query (uses START WITH and CONNECT BY PRIOR)
 Find pairs of SSN's such that the first SSN in the pair is that of an employee while the second SSN in the pair is that of his/her supervisor. Start with SSN 453453453.
