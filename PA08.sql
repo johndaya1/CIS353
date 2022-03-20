@@ -50,7 +50,7 @@ Find the ssn, lname, and salary of the four highest paid employees.
 SELECT ROWNUM as rank, ssn, lname, salary
 FROM (SELECT ssn, lname, salary
       FROM EMPLOYEE
-      ORDER BY salary)
+      ORDER BY salary DESC)
 WHERE ROWNUM <= 4;
 --
 /*(120) TOP-N query.
