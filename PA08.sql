@@ -78,7 +78,7 @@ For every employee whose salary is equal to one of the two lowest salaries, Find
 SELECT DISTINCT salary
 FROM (SELECT DISTINCT salary
       FROM EMPLOYEE 
-      ORDER BY ssalary ASC
+      ORDER BY salary ASC
       FETCH NEXT 2 ROWS ONLY)
 WHERE ROWNUM <= 2;
       
