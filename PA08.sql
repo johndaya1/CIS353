@@ -86,7 +86,7 @@ ORDER BY salary;
 /*(135) RANK query
 Find the rank of the salary 30000 among all salaries. (HINT: The ranks in our database are 1 for 25000, 4 for 30000, 5 for 38000, and so on.)
 */
-SELECT salary, RANK() OVER(ORDER BY salary ASC) AS rank
+SELECT RANK(30000) OVER(ORDER BY salary ASC) AS rank
 FROM employee;
 
 --
