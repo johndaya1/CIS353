@@ -89,67 +89,47 @@ SQL>
 SQL> /*(135) RANK query
 SQL> Find the rank of the salary 30000 among all salaries. (HINT: The ranks in our database are 1 for 25000, 4 for 30000, 5 for 38000, and so on.)
 SQL> */
-SQL> SELECT salary, RANK() OVER(ORDER BY salary ASC) AS rank
+SQL> SELECT RANK(30000) WITHIN GROUP(ORDER BY salary ASC) AS rank
   2  FROM employee;
 
-    SALARY       RANK                                                           
----------- ----------                                                           
-     25000          1                                                           
-     25000          1                                                           
-     25000          1                                                           
-     30000          4                                                           
-     38000          5                                                           
-     40000          6                                                           
-     43000          7                                                           
-     55000          8                                                           
-
-8 rows selected.
+      RANK                                                                      
+----------                                                                      
+         4                                                                      
 
 SQL> 
 SQL> --
 SQL> /*(140) RANK query ... compare with the previous query.
 SQL> Find the rank of the salary 31000 among all salaries.
 SQL> */
-SQL> SELECT salary, RANK(31000) WITH GROUP(ORDER BY salary ASC) AS rank
+SQL> SELECT RANK(31000) WITHIN GROUP(ORDER BY salary ASC) AS rank
   2  FROM employee;
-SELECT salary, RANK(31000) WITH GROUP(ORDER BY salary ASC) AS rank
-                           *
-ERROR at line 1:
-ORA-02000: missing WITHIN keyword 
 
+      RANK                                                                      
+----------                                                                      
+         5                                                                      
 
 SQL> --
 SQL> /*(145) DENSE RANK query
 SQL> Find the dense rank of the salary 30000 among all salaries. Hint: The dense ranks in our database are 1 for 25000, 2 for 30000, 3 for 38000, and so on.
 SQL> */
-SQL> SELECT salary, DENSE_RANK() OVER(ORDER BY salary ASC) AS rank
+SQL> SELECT DENSE_RANK(30000) WITHIN GROUP(ORDER BY salary ASC) AS rank
   2  FROM employee;
 
-    SALARY       RANK                                                           
----------- ----------                                                           
-     25000          1                                                           
-     25000          1                                                           
-     25000          1                                                           
-     30000          2                                                           
-     38000          3                                                           
-     40000          4                                                           
-     43000          5                                                           
-     55000          6                                                           
-
-8 rows selected.
+      RANK                                                                      
+----------                                                                      
+         2                                                                      
 
 SQL> 
 SQL> --
 SQL> /*(150) DENSE RANK query ... compare with the previous query.
 SQL> Find the dense rank of the salary 31000 among all salaries. Hint: The dense ranks in our database are 1 for 25000, 2 for 30000, 3 for 38000, and so on.
 SQL> */
-SQL> SELECT salary, DENSE_RANK(31000) WITHIN GROUP(ORDER BY salary ASC) AS rank
+SQL> SELECT DENSE_RANK(31000) WITHIN GROUP(ORDER BY salary ASC) AS rank
   2  FROM employee;
-SELECT salary, DENSE_RANK(31000) WITHIN GROUP(ORDER BY salary ASC) AS rank
-       *
-ERROR at line 1:
-ORA-00937: not a single-group group function 
 
+      RANK                                                                      
+----------                                                                      
+         3                                                                      
 
 SQL> --
 SQL> /*(155)HIERARCHICAL query (uses START WITH and CONNECT BY PRIOR)
