@@ -1,5 +1,5 @@
 /*
-Author: JRA 
+Author: JRA
 CREDITS: The SailorsDB is a significant extension of the one that appears
 in Ramakrishnan and Gehrke's book. I have added several extensions in order
 to demonstrate important SQL features.
